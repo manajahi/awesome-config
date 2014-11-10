@@ -2,8 +2,8 @@
 -- Default awesome theme --
 ---------------------------
 theme = {}
-
-theme.my_original_path = "/home/amine/.config/awesome/original"
+theme.confdir = os.getenv("HOME") .. "/.config/awesome/"
+theme.my_original_path = theme.confdir .. "/original"
 theme.font          = "sans 8"
 
 -- try not to use transparency: it is bullshit 
@@ -95,7 +95,7 @@ theme.layout_spiral  = theme.my_original_path .."/layouts/spiralw.png"
 theme.layout_dwindle = theme.my_original_path .."/layouts/dwindlew.png"
 
 theme.awesome_icon = theme.my_original_path .."/debian.png"
-theme.tasklist_floating_icon = "max.png"
+theme.tasklist_floating_icon = theme.confdir.."/max.png"
 
 return theme
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:encoding=utf-8:textwidth=80

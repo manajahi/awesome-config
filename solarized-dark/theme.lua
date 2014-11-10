@@ -8,6 +8,7 @@
 
 -- {{{ Main
 theme = {}
+theme.confdir = os.getenv("HOME") .. "/.config/awesome/"
 theme.default_themes_path = "/usr/share/awesome/themes"
 theme.wallpaper_cmd = { "awsetbg "..theme.default_themes_path.."/zenburn/zenburn-background.png" }
 theme.colors = {}
@@ -30,7 +31,8 @@ theme.colors.green   = "#859900ff"
 -- }}}
 
 -- {{{ Styles
-theme.font      = "Terminus 9"
+theme.font          = "sans 8"
+-- theme.font      = "Terminus 9"
 
 -- {{{ Colors
 theme.fg_normal  = theme.colors.base02
@@ -120,7 +122,8 @@ theme.titlebar_maximized_button_focus_inactive  = theme.default_themes_path.."/z
 theme.titlebar_maximized_button_normal_inactive = theme.default_themes_path.."/zenburn/titlebar/maximized_normal_inactive.png"
 
 -- theme.tasklist_floating_icon = "/home/amine/.config/awesome/original/tasklist/max.png"
-theme.tasklist_floating_icon = "max.png"
+theme.tasklist_floating_icon = theme.confdir.."/max.png"
+--theme.tasklist_floating_icon = "max.png"
 -- }}}
 -- }}}
 

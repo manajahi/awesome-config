@@ -27,7 +27,8 @@ browser = os.getenv("BROWSER") or "google-chrome"
 require("calendar2")
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init(confdir .. "/theme/theme.lua")
+-- beautiful.init(confdir .. "/original/theme.lua")
+beautiful.init(confdir .. "/solarized-dark/theme.lua")
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
