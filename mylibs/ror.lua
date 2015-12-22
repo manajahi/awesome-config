@@ -12,7 +12,7 @@
 -- for browsers, or the file name for emacs).
 
 table5={
-   ["e"]={"emacsclient","Emacs"}, 
+   ["e"]={"emacsclient -c -a \"\" --eval '(eshell (quote bla))'","Emacsclient"}, 
    ["b"]={"google-chrome","Google-chrome"}, 
    ["i"]={"icedove","Icedove"}, 
    ["p"]={"xterm -e python","python"}, 
