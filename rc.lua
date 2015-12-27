@@ -149,6 +149,25 @@ batwidget.align="right"
 -- Register widget                                                                                 
 vicious.register(batwidget, vicious.widgets.bat, '<span color="#00A800">B: </span><span color="#A8A800">$1</span><span color="#CC9393">$2%</span>', 5, "BAT0")
 
+-- Keyboard layout widget
+kbdcfg = {}
+kbdcfg.cmd = "setxkbmap"
+kbdcfg.layout = { "fr", "us", "ar" }
+kbdcfg.current = 1  -- us is our default layout
+kbdcfg.widget = widget({ type = "textbox", align = "right" })
+kbdcfg.widget.text = '<span color="#00A800"><b>' .. kbdcfg.layout[kbdcfg.current] .. '</b></span>'
+kbdcfg.switch = function ()
+   kbdcfg.current = kbdcfg.current % #(kbdcfg.layout) + 1
+   local t = " " .. kbdcfg.layout[kbdcfg.current] .. " "
+   kbdcfg.widget.text = '<span color="#00A800"><b>' .. kbdcfg.layout[kbdcfg.current] .. '</b></span>'
+   os.execute( kbdcfg.cmd .. t )
+end
+-- Mouse bindings
+kbdcfg.widget:buttons(awful.util.table.join(
+			 awful.button({ }, 1, function () kbdcfg.switch() end)
+))
+
+
 
 -- Textclock widget
 textclock = awful.widget.textclock({ align = "right"}, '<span color="#00A800">%a %b %d, %H:%M</span>', 60)
@@ -256,6 +275,7 @@ for s = 1, screen.count() do
       laptop == 0 and batwidget, spacer or nil, 
       pkgwidget, spacer,
       volwidget, spacer,
+      kbdcfg.widget, spacer,
       netwidget, spacer,
       memwidget, spacer,
       cpuwidget, spacer,
