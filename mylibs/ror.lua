@@ -13,7 +13,7 @@
 
 table5={
    ["e"]={"emacsclient -c -a \"\" --eval '(eshell (quote bla))'","Emacsclient"}, 
-   ["b"]={"google-chrome","Google-chrome"}, 
+   ["b"]={"google-chrome http://www.google.com","Google-chrome"}, 
    ["i"]={"icedove","Icedove"}, 
    ["p"]={"xterm -e python","python"}, 
 
