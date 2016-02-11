@@ -12,13 +12,12 @@
 -- for browsers, or the file name for emacs).
 
 table5={
-   ["e"]={"emacsclient -c -a \"\" --eval '(eshell (quote bla))'","Emacsclient"}, 
-   ["b"]={"google-chrome http://www.google.com","Google-chrome"}, 
+   ["e"]={"emacsclient -c -a \"\" --eval '(eshell (quote bla))'","Emacs"}, 
+   ["b"]={"google-chrome","google-chrome"}, 
    ["i"]={"icedove","Icedove"}, 
    ["p"]={"xterm -e python","python"}, 
 
    -- awful.key({ modkey }, "p", function () awful.util.spawn_with_shell("xterm -e xterm -e python") end),
-
    -- ["e"]={"emacsclient -a emacs -n -c","Emacs"}, 
    -- ["Control-z"]={"google-chrome --app=http://www.rdio.com","www.rdio.com", "instance"},
    -- ["v"]={"firefox -new-window 'http://www.evernote.com/Home.action?login=true#v=l&so=mn'","Evernote", "name"}, 

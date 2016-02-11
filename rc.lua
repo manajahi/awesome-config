@@ -410,11 +410,14 @@ globalkeys = awful.util.table.join(
 
    --    awful.key({ modkey }, "w", function () awful.util.spawn("firefox") end),
 
-   -- surfraw search
+   -- surfraw search, this is very hackish since we force the change to the first tag
    awful.key({ modkey }, "g", function()  awful.prompt.run({ prompt = "<span foreground='#00A800'><b>Google Search:</b></span> "},
 							   mypromptbox[mouse.screen].widget,
 							   function(input)
+							      local screen = mouse.screen
 							      awful.util.spawn_with_shell("sr  -browser=" .. browser .. " google " .. input)
+							      awful.tag.viewonly(tags[screen][1])
+							      run_or_raise("google-chrome", { class = "google-chrome" })
 							   end, nil,
 							   awful.util.getdir("cache") .. "/history_google")
 			      end),
@@ -523,6 +526,8 @@ awful.rules.rules = {
    -- Set iceweasel to always map on tag number 1 of screen 1
    { rule = { class = "Iceweasel" },
      properties = { tag = tags[1][1] } },
+   { rule = { class = "Google-chrome" },
+     properties = { tag = tags[1][1],switchtotag = true } },
    { rule = { class = "Icedove" },
      properties = { tag = tags[1][1] } },
 }
