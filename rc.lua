@@ -100,8 +100,10 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 --  Cpu usage widget
 --cpuwidget = wibox.widget.textbox({ align = "right" }) 
 cpuwidget = wibox.widget.textbox()
-cpuwidget.width=60
+cpuwidget.width=70
+-- cpuwidget.set_width(70)
 cpuwidget.align="right"
+-- cpuwidget:set_align("right")
 vicious.register(cpuwidget, vicious.widgets.cpu, '<span color="#00A800"><b>C: </b></span><span color="#CC9393">$1% </span>')
 
 
@@ -173,16 +175,13 @@ kbdcfg:buttons(awful.util.table.join(
 
 -- Textclock widget
 mytextclock = awful.widget.textclock('<span color="#00A800">%a %b %d, %H:%M</span>', 10)
--- textclock = awful.widget.textclock({ align = "right"}, '<span color="#00A800">%a %b %d, %H:%M</span>', 60)
-require('calendar2')
+-- mytextclock = awful.widget.textclock({ align = "right"}, '<span color="#00A800">%a %b %d, %H:%M</span>', 60)
+local calendar2 = require('calendar2')
 calendar2.addCalendarToWidget(mytextclock, "<span color='green'>%s</span>")
 
 spacer = wibox.widget.textbox()
 spacer.text = " "
 -- }}}
-
--- Create a systray
-mysystray =  wibox.widget.systray()
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -238,8 +237,9 @@ end))
 for s = 1, screen.count() do
 
    -- Create a promptbox for each screen
-   mypromptbox[s] = awful.widget.prompt()
-    --   mypromptbox[s] = awful.widget.prompt({ prompt = "<span foreground='#00A800'><b>Run:</b></span> ", layout = awful.widget.layout.horizontal.leftright })
+   --mypromptbox[s] = awful.widget.prompt()
+   -- mypromptbox[s] = awful.widget.prompt({ prompt = "<span foreground='#00A800'><b>Run:</b></span> ", layout = awful.widget.layout.horizontal.leftright })
+   mypromptbox[s] = awful.widget.prompt({ prompt = "<span foreground='#00A800'><b>Run:</b></span> " })
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     mylayoutbox[s] = awful.widget.layoutbox(s)
@@ -267,21 +267,14 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     right_layout:add(cpuwidget)
-    right_layout:add(spacer)
     right_layout:add(memwidget)
-    right_layout:add(spacer)
     right_layout:add(pkgwidget)
-    right_layout:add(spacer)
     right_layout:add(volwidget)
-    right_layout:add(spacer)
     right_layout:add(batwidget)
-    right_layout:add(spacer)
     -- right_layout:add(kbdcfg)
     -- right_layout:add(spacer)
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(spacer)
     right_layout:add(mytextclock)
-    right_layout:add(spacer)
     right_layout:add(mylayoutbox[s])
     --   laptop == 0 and batwidget, spacer or nil, 
     --   pkgwidget, spacer,
